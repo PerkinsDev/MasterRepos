@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Gross Quiz</title>
+</head>
+<body>
+<script>
+    var gross_score = 0;
+    if(prompt("Would you rather: 1) eat poop or 2) drink pee?") === "1") {
+        gross_score = gross_score + 1;
+    }
+    if(prompt("Have you ever pooped in your pants?: 1) Yes 2) No") === "1") {
+        gross_score = gross_score + 1;
+    }
+    if(prompt("Would you rather: 1) fart pee or 2) pee out poop?") === "2") {
+        gross_score = gross_score + 1;
+    }
+    if(prompt("Do you fart: 1) really gross or 2) chunks of doo doo out of your butt?") === "2") {
+        gross_score = gross_score + 1;
+    }
+      if(prompt("If poop was food, woud you eat it?: 1) Oh Yeah! 2) I'd taste but not eat") === "1") {
+        gross_score = gross_score + 1;
+    }
+    
+    if (gross_score === 0) {
+            alert("Give up...your gross score is: " + gross_score.toString() + ". You are not nasty. Try harder...eat a poop right now");
+    }
+    if (gross_score === 1) {
+            alert("Boo...your gross score is: " + gross_score.toString() + ". You are not that nasty.");
+    }
+       if (gross_score === 2) {
+            alert("Lame but...your gross score is: " + gross_score.toString() + ". You are pretty nasty.");
+    }
+       if (gross_score === 3) {
+            alert("Mild......your gross score is: " + gross_score.toString() + ". You are fuckin' gross.");
+    }
+       if (gross_score === 4) {
+            alert("Congrats...your gross score is: " + gross_score.toString() + ". You are yuck, yuck, go home you fuck!.");
+    }
+       if (gross_score === 5) {
+            alert("Congrats, you are the champ...your gross score is: " + gross_score.toString() + ". You should be in jail...I am informing the cops now.");
+    }
+</script>
+
+
+</body>
+</html>
