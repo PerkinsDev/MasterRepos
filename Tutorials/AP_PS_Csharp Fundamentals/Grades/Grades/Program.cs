@@ -19,6 +19,10 @@ namespace Grades
             // must convert a double to float
             book.AddGrade(89.5f);
 
-        }
+            GradeBook book2 = new GradeBook();
+            book2.AddGrade(75);
+            
+
+        }  // ctr + f10 or right click to run to cursor - quixk debug with no break point
     }
 }
