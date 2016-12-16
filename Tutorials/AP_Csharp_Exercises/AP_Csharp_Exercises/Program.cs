@@ -10,6 +10,7 @@ namespace AP_Csharp_Exercises
     {
         static void Main(string[] args)
         {
+            // FROM WEBSITE
             //The exercises below help you practice declaring variables, getting inputs from keyboard, and outputting the results on the console window.
 
             /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
