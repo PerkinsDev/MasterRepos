@@ -15,6 +15,23 @@ namespace Grades
             grades = new List<float>();  // can do as a field as below or in the traditional ctor - same except here you can pass parameters in
         }
 
+
+        public GradeStatistics ComputeStatistics()
+        {
+            GradeStatistics stats = new GradeStatistics();
+            float sum = 0;
+            foreach(float grade in grades)
+            {
+                stats.HighestGrade = Math.Max(grade, stats.HighestGrade);
+                stats.LowestGrade = Math.Min(grade, stats.LowestGrade);
+
+                sum += grade;
+            }
+            stats.AverageGrade = sum / grades.Count();
+
+            return stats;
+        }
+
         // members of the class - 2 types
         // 1.hold state or data - grades
         // 2.behavior - do work - methods - are verbs

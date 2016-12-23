@@ -18,10 +18,17 @@ namespace Grades
             book.AddGrade(91);
             // must convert a double to float
             book.AddGrade(89.5f);
+            book.AddGrade(75);
 
-            GradeBook book2 = new GradeBook();
-            book2.AddGrade(75);
-            
+
+            //GradeBook book2 = new GradeBook();
+            //book2.AddGrade(75);
+
+
+            GradeStatistics stats = book.ComputeStatistics();
+            Console.WriteLine(stats.AverageGrade);
+            Console.WriteLine(stats.HighestGrade);
+            Console.WriteLine(stats.LowestGrade);
 
         }  // ctr + f10 or right click to run to cursor - quixk debug with no break point
     }
