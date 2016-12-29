@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//using System.Speech.Synthesis;
 
 namespace Grades
 {
@@ -10,6 +11,10 @@ namespace Grades
     {
         static void Main(string[] args)
         {
+            // From referencing assemblies outside of the project template
+            //SpeechSynthesizer synth = new SpeechSynthesizer();
+            //synth.Speak("Hello! This is the grade book program. thwekjrthwerfhouishvjvnskdjfhoeuirdfjnsdfuseuilfh");
+
             // cookie cutter - class definition: dont do any actual work but can use to vreate objects
             // stamps out objects from the computer memory
             // must ask for a new instance and use () to invoke the constructor behind the scenes

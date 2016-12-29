@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Grades
 {
-    class GradeBook
+    public class GradeBook
     {
 
         // constructor - explicit access to initialization -  snippets is ctor + tab + tab            
@@ -16,7 +16,7 @@ namespace Grades
         }
 
 
-        internal GradeStatistics ComputeStatistics()
+        public GradeStatistics ComputeStatistics()
         {
             GradeStatistics stats = new GradeStatistics();
 
