@@ -41,6 +41,7 @@ namespace Grades
             grades.Add(grade); 
         }
 
+        public string Name;
     
         // grades is a field - member that holds state. List is from the collection class. list of floats to hold grades
         // private set explicitly for readability - private is default access mod.  do because you want to encapsulate / protect

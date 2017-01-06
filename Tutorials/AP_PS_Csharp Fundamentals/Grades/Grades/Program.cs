@@ -11,6 +11,11 @@ namespace Grades
     {
         static void Main(string[] args)
         {
+            
+            //Console.WriteLine(g2.Name);  // results in g1's name
+
+
+
             // From referencing assemblies outside of the project template
             //SpeechSynthesizer synth = new SpeechSynthesizer();
             //synth.Speak("Hello! This is the grade book program. thwekjrthwerfhouishvjvnskdjfhoeuirdfjnsdfuseuilfh");
@@ -19,6 +24,7 @@ namespace Grades
             // stamps out objects from the computer memory
             // must ask for a new instance and use () to invoke the constructor behind the scenes
             // null ref ex- uninitialized variable (grades in gradebook) go back and initialize with the new keyword
+            
             GradeBook book = new GradeBook();
             book.AddGrade(91);
             // must convert a double to float
@@ -30,10 +36,8 @@ namespace Grades
             Console.WriteLine(stats.AverageGrade);
             Console.WriteLine(stats.HighestGrade);
             Console.WriteLine(stats.LowestGrade);
-
-            //GradeBook book2 = new GradeBook();
-            //book2.AddGrade(75);
             
+
 
         }  // ctr + f10 or right click to run to cursor - quixk debug with no break point
     }
