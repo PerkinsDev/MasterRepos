@@ -49,5 +49,17 @@ namespace Grades.Tests
             // by Calculator 85.16666666666667 is average but will throw error. Very difficult to work wit floating point numbers
             // can use the Delta option (how off can it vary by) which is a third parameter to pass into this Assert
         }
+
+        [TestMethod]
+        public void ComputesLetterGrade()
+        {
+            GradeBook book = new GradeBook();
+            book.AddGrade(91);
+            book.AddGrade(89.5f);
+            book.AddGrade(75);
+
+            GradeStatistics result = book.ComputeStatistics();
+            Assert.AreEqual("B", result.LetterGrade);
+        }
     }
 }
