@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,25 +12,56 @@ namespace Grades
     {
         static void Main(string[] args)
         {
-            
-           
-            
             GradeBook book = new GradeBook();
 
-          
-            book.AddGrade(91);
-            // must convert a double to float
-            book.AddGrade(89.5f);
-            book.AddGrade(75);
+            GetBookName(book);
+            AddGrades(book);
+            SaveGrades(book);
+            WriteResults(book);
+        }
 
-
+        private static void WriteResults(GradeBook book)
+        {
             GradeStatistics stats = book.ComputeStatistics();
             WriteResult("Average", stats.AverageGrade);
             WriteResult("Highest", stats.HighestGrade);  // explicit conversion. type coertion, typecast
             WriteResult("Lowest", stats.LowestGrade);
-            WriteResult("Grade", stats.LetterGrade);
-        } 
-       
+            WriteResult(stats.Description, stats.LetterGrade);
+        }
+
+        private static void SaveGrades(GradeBook book)
+        {
+            // Write grade Ddata to file // using auto closes/dispose
+            // release resources, flush data, lock file
+            using (StreamWriter outputFile = File.CreateText("grades.txt"))
+            {
+                // loop to write grades to whatever destination we pass in
+                book.WriteGrades(outputFile);
+            }
+        }
+
+        private static void AddGrades(GradeBook book)
+        {
+            book.AddGrade(91);
+            // must convert a double to float
+            book.AddGrade(89.5f);
+            book.AddGrade(75);
+        }
+
+        private static void GetBookName(GradeBook book)
+        {
+            try
+            {
+                Console.WriteLine("Enter a name.");
+                book.Name = Console.ReadLine();
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
 
         static void WriteResult(string description, float result)
         {
@@ -99,6 +131,46 @@ namespace Grades
         //static void WriteResult(string description, int result)
         //{
         //    Console.WriteLine(description + ": " + result);
+        //}
+
+        //string userName = Console.ReadLine();
+
+        //try
+        //{
+        //    IsValidString(userName);
+        //    book.Name = userName;
+        //}
+        //catch (Exception ex)
+        //{
+        //    Console.WriteLine("Please enter a valid name.");
+        //    Console.WriteLine(ex.Message);
+        //    Console.WriteLine(ex.StackTrace);
+        //}
+
+        //public static bool IsValidString(string textString)
+        //{
+        //    try
+        //    {
+        //        textString.All(c => Char.IsLetter(c));
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Please enter a valid name.");
+        //        Console.WriteLine(ex.Message);
+
+        //        Console.WriteLine(ex.StackTrace);
+        //        return false;
+        //    }   
+        //}
+
+        //catch (NullReferenceException)
+        //{
+        //    Console.WriteLine("Something went wrong");
+        //}
+        //catch (Exception ex)  // catches all ex, but must be at the end
+        //{
+        //    Console.WriteLine(ex.Message);
         //}
     }
 }
