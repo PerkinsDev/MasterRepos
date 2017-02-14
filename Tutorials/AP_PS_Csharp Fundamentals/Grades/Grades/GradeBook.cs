@@ -18,8 +18,10 @@ namespace Grades
         }
 
 
-        public GradeStatistics ComputeStatistics()
+        public virtual GradeStatistics ComputeStatistics()
         {
+            Console.WriteLine("GradeBook::ComputeStatistics");
+
             GradeStatistics stats = new GradeStatistics();
 
             float sum = 0;
@@ -111,7 +113,8 @@ namespace Grades
 
         // grades is a field - member that holds state. List is from the collection class. list of floats to hold grades
         // private set explicitly for readability - private is default access mod.  do because you want to encapsulate / protect
-        private List<float> grades;             // = new List<float>(); // generic type syntax <>.
+        // Setting as protected allows access for current class and DERIVED class
+        protected List<float> grades;             // = new List<float>(); // generic type syntax <>.
 
     }
 }
