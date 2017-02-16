@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Grades
 {
-    public class GradeBook
+    public class GradeBook : GradeTracker
     {
 
         // constructor - explicit access to initialization -  snippets is ctor + tab + tab            
@@ -18,7 +18,7 @@ namespace Grades
         }
 
 
-        public virtual GradeStatistics ComputeStatistics()
+        public override GradeStatistics ComputeStatistics()
         {
             Console.WriteLine("GradeBook::ComputeStatistics");
 
@@ -38,7 +38,7 @@ namespace Grades
         }
 
         // Textwriter is an abstract class that writes character data to whatever output you specify
-        public void WriteGrades(TextWriter destination) //Escape character to use a C# keyword i.e. out, class. not reccomended
+        public override void WriteGrades(TextWriter destination) //Escape character to use a C# keyword i.e. out, class. not reccomended
         {
             for (int i = 0; i < grades.Count; i++) // often you loop over a collection which has a count prop or an array which has a length prop
             {
@@ -55,7 +55,7 @@ namespace Grades
         // members of the class - 2 types
         // 1.hold state or data - grades
         // 2.behavior - do work - methods - are verbs
-        public void AddGrade(float grade) // grade param (can think ps as a variable and use ant where inside the curly braces)is scoped to this method
+        public override void AddGrade(float grade) // grade param (can think ps as a variable and use ant where inside the curly braces)is scoped to this method
         {
             grades.Add(grade);
         }
@@ -68,44 +68,6 @@ namespace Grades
         //{
         //    get; set;
         //}
-
-        public string Name
-        {
-            get
-            {
-                // when someone wants to read the name property - return private field
-                return _name;
-            }
-            set
-            {
-                if (string.IsNullOrEmpty(value))
-                {
-                    throw new ArgumentException("Name cannot be null or empty");
-                }
-
-                // Delegates
-                // if we know the name is changing (do not match). then want to be able to invoke some arbitrary code
-                if (_name != value && NameChanged != null)
-                {
-                    // Instance the NAmeChangedEventArgs class to set names to the string params of the method
-                    NameChangedEventArgs args = new NameChangedEventArgs();
-                    args.ExistingName = _name;
-                    args.NewName = value;
-                    // Invoke delegate if name has chenged
-                    // use the this keyword to pass along the object you are working inside of
-                    NameChanged(this, args);
-                }
-
-                // if value is not null or empty, then will I assign this value into the _name field. otherwise do nothing
-                _name = value;
-            }
-
-        }
-
-        // now have a public member that other areas of app can walk up to and assign to thos delegate and gov it the code that needs to be invoked somewhere in the outside world
-        public event NameChangedDelegate NameChanged;
-
-        private string _name;
 
 
         // public field...will redo as a property
