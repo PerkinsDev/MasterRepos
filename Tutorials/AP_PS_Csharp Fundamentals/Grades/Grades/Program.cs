@@ -12,7 +12,7 @@ namespace Grades
     {
         static void Main(string[] args)
         {
-            GradeTracker book = CreateGradeBook();
+            IGradeTracker book = CreateGradeBook();
 
             //GetBookName(book);
             AddGrades(book);
@@ -20,21 +20,27 @@ namespace Grades
             WriteResults(book);
         }
 
-        private static GradeTracker CreateGradeBook()
+        private static IGradeTracker CreateGradeBook()
         {
             return  new ThrowAwayGradeBook();
         }
 
-        private static void WriteResults(GradeTracker book)
+        private static void WriteResults(IGradeTracker book)
         {
             GradeStatistics stats = book.ComputeStatistics();
+
+            // Since book derives ultimately from IGradeTracker if we add IEnumerble to IGradeTracker we can use foreach 
+            foreach (float grade in book)
+            {
+                Console.WriteLine(grade);
+            }
             WriteResult("Average", stats.AverageGrade);
             WriteResult("Highest", stats.HighestGrade);  // explicit conversion. type coertion, typecast
             WriteResult("Lowest", stats.LowestGrade);
             WriteResult(stats.Description, stats.LetterGrade);
         }
 
-        private static void SaveGrades(GradeTracker book)
+        private static void SaveGrades(IGradeTracker book)
         {
             // Write grade Ddata to file // using auto closes/dispose
             // release resources, flush data, lock file
@@ -45,7 +51,7 @@ namespace Grades
             }
         }
 
-        private static void AddGrades(GradeTracker book)
+        private static void AddGrades(IGradeTracker book)
         {
             book.AddGrade(91);
             // must convert a double to float
@@ -53,7 +59,7 @@ namespace Grades
             book.AddGrade(75);
         }
 
-        private static void GetBookName(GradeTracker book)
+        private static void GetBookName(IGradeTracker book)
         {
             try
             {
